@@ -3,6 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@debbl/eslint-config-prettier': ^0.0.17
   '@debbl/eslint-config-react': ^0.0.16
+  '@iconify/icons-carbon': ^1.2.10
+  '@iconify/react': ^4.0.0
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@vitejs/plugin-react': ^2.1.0
@@ -27,6 +29,8 @@ dependencies:
 devDependencies:
   '@debbl/eslint-config-prettier': 0.0.17_znq2sm4m5bonjw4qqm6mwhbe2q
   '@debbl/eslint-config-react': 0.0.16_z4bbprzjrhnsfa24uvmcbu7f5q
+  '@iconify/icons-carbon': 1.2.10
+  '@iconify/react': 4.0.0_react@18.2.0
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@vitejs/plugin-react': 2.1.0_vite@3.1.7
@@ -461,6 +465,25 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify/icons-carbon/1.2.10:
+    resolution: {integrity: sha512-xQgwa0Bzi+5s6t/CMbSeJpiLZ4af23wlsn25HseRMqtbdtrvdXCo9xN+5gX2frcZ5mqxHDrToL0zjGevrtxkNA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/react/4.0.0_react@18.2.0:
+    resolution: {integrity: sha512-YE+z5PCegYyuJtLR6KBbJNlssmuVgRyFyRxcgxSPVkN3Gsm7npSzrUh+gWlBxrNb5g4Q6Nnb1gczPBNcwtUpng==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      '@iconify/types': 2.0.0
+      react: 18.2.0
+    dev: true
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
   /@jridgewell/gen-mapping/0.1.1:
@@ -2835,7 +2858,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
