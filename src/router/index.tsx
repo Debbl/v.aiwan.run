@@ -2,14 +2,14 @@ import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 
-const App = lazy(() => import("../App"));
+const Index = lazy(() => import("../pages/Index"));
 const Clock = lazy(() => import("../pages/000/Clock"));
 
 const routes: RouteObject[] = [
   {
-    id: "App",
+    id: "Index",
     path: "/",
-    element: <App />,
+    element: <Index />,
   },
   {
     id: "Clock",

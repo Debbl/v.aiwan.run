@@ -19,7 +19,7 @@ function Clock() {
       secondsEl.current!.style.animationDelay = `${-seconds}s`;
       minutesEl.current!.style.animationDelay = `-${minutes * 60 + seconds}s`;
       hoursEl.current!.style.animationDelay = `-${
-        (hours % 12) * 60 * 60 + minutes * 60 + seconds
+        hours * 60 * 60 + minutes * 60 + seconds
       }s`;
     }
     cssInit();
