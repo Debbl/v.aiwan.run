@@ -1,11 +1,28 @@
 import { useEffect, useRef } from "react";
+import "./style.css";
 
 function Clock() {
   const cEl = useRef<HTMLCanvasElement>(null);
+  const hoursEl = useRef<HTMLDivElement>(null);
+  const minutesEl = useRef<HTMLDivElement>(null);
+  const secondsEl = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!cEl.current?.getContext) return;
     const ctx = cEl.current!.getContext("2d")!;
 
+    // CSS 动画函数
+    function cssInit() {
+      const time = new Date();
+      const hours = time.getHours();
+      const minutes = time.getMinutes();
+      const seconds = time.getSeconds();
+      secondsEl.current!.style.animationDelay = `${-seconds}s`;
+      minutesEl.current!.style.animationDelay = `-${minutes * 60 + seconds}s`;
+      hoursEl.current!.style.animationDelay = `-${
+        (hours % 12) * 60 * 60 + minutes * 60 + seconds
+      }s`;
+    }
+    cssInit();
     function drawBg() {
       ctx.save();
       ctx.translate(150, 150);
@@ -141,6 +158,13 @@ function Clock() {
       >
         你的浏览器不支持 Canvas。请升级您的浏览器！
       </canvas>
+      <div className="clock-css-container">
+        <div className="clock">
+          <div ref={hoursEl} className="hand hours"></div>
+          <div ref={minutesEl} className="hand minutes"></div>
+          <div ref={secondsEl} className="hand seconds"></div>
+        </div>
+      </div>
     </div>
   );
 }

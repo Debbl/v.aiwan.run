@@ -1,0 +1,76 @@
+.clock-css-container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+  /* background-color: red; */
+}
+
+.clock-css-container .clock {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.clock-css-container .clock::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 10px;
+  height: 10px;
+  z-index: 100;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.clock-css-container .clock::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: black;
+}
+.clock-css-container .clock .hand {
+  position: absolute;
+  left: 0; 
+  right: 0;
+  bottom: 50%;
+  margin: 0 auto;
+  transform-origin: bottom;
+}
+.clock-css-container .clock .hand.seconds {
+  width: 3px;
+  height: 120px;
+  border-radius: 6px;
+  background-color: red;
+  animation: tick 60s infinite linear;
+}
+.clock-css-container .clock .hand.minutes {
+  width: 6px;
+  height: 80px;
+  border-radius: 8px;
+  background-color: black;
+  animation: tick 3600s infinite linear;
+}
+.clock-css-container .clock .hand.hours {
+  width: 8px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: black;
+  animation: tick 43200s infinite linear;
+}
+@keyframes tick {
+  to{
+    transform: rotateZ(360deg);
+  }
+}
+
