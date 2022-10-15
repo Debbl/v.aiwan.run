@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const Index = lazy(() => import("../pages/Index"));
 const Clock = lazy(() => import("../pages/000/Clock"));
+const SolarSystem = lazy(() => import("../pages/001/SolarSystem"));
 
 const routes: RouteObject[] = [
   {
@@ -15,6 +16,11 @@ const routes: RouteObject[] = [
     id: "Clock",
     path: "/000",
     element: <Clock />,
+  },
+  {
+    id: "Solar System",
+    path: "/001",
+    element: <SolarSystem />,
   },
 ];
 const router = createBrowserRouter(routes);
