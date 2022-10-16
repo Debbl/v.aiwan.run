@@ -5,6 +5,7 @@ specifiers:
   '@debbl/eslint-config-react': ^0.0.16
   '@iconify/icons-carbon': ^1.2.10
   '@iconify/react': ^4.0.0
+  '@types/node': ^18.11.0
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@vitejs/plugin-react': ^2.1.0
@@ -31,6 +32,7 @@ devDependencies:
   '@debbl/eslint-config-react': 0.0.16_z4bbprzjrhnsfa24uvmcbu7f5q
   '@iconify/icons-carbon': 1.2.10
   '@iconify/react': 4.0.0_react@18.2.0
+  '@types/node': 18.11.0
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@vitejs/plugin-react': 2.1.0_vite@3.1.7
@@ -562,6 +564,10 @@ packages:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: true
+
+  /@types/node/18.11.0:
+    resolution: {integrity: sha512-IOXCvVRToe7e0ny7HpT/X9Rb2RYtElG1a+VshjwT00HxrM2dWBApHQoqsI6WiY7Q03vdf2bCrIGzVrkF/5t10w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:

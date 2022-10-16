@@ -1,5 +1,5 @@
-import Footer from "../components/Footer";
-import { routes } from "../router";
+import Footer from "~/components/Footer";
+import { routes } from "~/router";
 
 function Index() {
   const IndexArr = routes.slice(1).map((r) => ({

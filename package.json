@@ -19,6 +19,7 @@
     "@debbl/eslint-config-react": "^0.0.16",
     "@iconify/icons-carbon": "^1.2.10",
     "@iconify/react": "^4.0.0",
+    "@types/node": "^18.11.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
