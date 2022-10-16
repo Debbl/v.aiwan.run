@@ -52,8 +52,13 @@ function SolarSystem() {
     requestAnimationFrame(draw);
   }, []);
   return (
-    <div>
-      <canvas ref={cEl} width="300" height="300" className="border"></canvas>
+    <div className="min-w-[375px]">
+      <canvas
+        ref={cEl}
+        width="300"
+        height="300"
+        className="border mx-auto"
+      ></canvas>
     </div>
   );
 }

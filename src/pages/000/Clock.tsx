@@ -149,7 +149,7 @@ function Clock() {
     requestAnimationFrame(draw);
   }, []);
   return (
-    <div className="flex mt-16 justify-center items-center">
+    <div className="flex min-w-[300px] flex-col sm:flex-row mt-16 justify-center items-center">
       <canvas
         ref={cEl}
         width="300"
