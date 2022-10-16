@@ -19,7 +19,7 @@ function Clock() {
       secondsEl.current!.style.animationDelay = `${-seconds}s`;
       minutesEl.current!.style.animationDelay = `-${minutes * 60 + seconds}s`;
       hoursEl.current!.style.animationDelay = `-${
-        (hours % 12) * 60 * 60 + minutes * 60 + seconds
+        hours * 60 * 60 + minutes * 60 + seconds
       }s`;
     }
     cssInit();
@@ -149,7 +149,7 @@ function Clock() {
     requestAnimationFrame(draw);
   }, []);
   return (
-    <div className="flex mt-16 justify-center items-center">
+    <div className="flex min-w-[300px] flex-col sm:flex-row mt-16 justify-center items-center">
       <canvas
         ref={cEl}
         width="300"
