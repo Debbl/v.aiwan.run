@@ -1,44 +1,43 @@
 import { useEffect, useRef } from "react";
+import SignState from "./utils/SignState";
 
 function CanvasSign() {
   const cEl = useRef<HTMLCanvasElement>(null);
-  function reset() {
-    const ctx = cEl.current!.getContext("2d")!;
-    ctx.save();
-    ctx.clearRect(0, 0, 400, 400);
-    ctx.restore();
-  }
+  const { current: signState } = useRef(new SignState());
   useEffect(() => {
-    if (!cEl.current) return;
-    const ctx = cEl.current.getContext("2d")!;
-    // const width = cEl.current.width;
-    // const height = cEl.current.height;
-    // if (window.devicePixelRatio) {
-    //   cEl.current.style.width = `${width}px`;
-    //   cEl.current.style.height = `${height}px`;
-    //   cEl.current.height = height * window.devicePixelRatio;
-    //   cEl.current.width = width * window.devicePixelRatio;
-    //   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    // }
-    function mouseMoveHandle(e: MouseEvent) {
-      ctx.lineTo(e.offsetX, e.offsetY);
-      ctx.stroke();
-    }
-    cEl.current.addEventListener("mousedown", (e) => {
-      ctx.beginPath();
-      ctx.lineWidth = 3;
-      ctx.lineJoin = "round";
-      ctx.shadowBlur = 1;
-      ctx.moveTo(e.offsetX, e.offsetY);
-      cEl.current!.addEventListener("mousemove", mouseMoveHandle);
-    });
-    cEl.current.addEventListener("mouseup", () => {
-      cEl.current!.removeEventListener("mousemove", mouseMoveHandle);
-    });
+    signState.emit("el", cEl.current!);
+    return () => signState.removeEvent();
   }, []);
+
+  // reset canvas
+  // function reset() {
+  //   const ctx = cEl.current!.getContext("2d")!;
+  //   ctx.save();
+  //   ctx.clearRect(0, 0, 400, 400);
+  //   ctx.restore();
+  // }
+  // function undo() {
+  //   console.log(snapshotData);
+
+  //   const ctx = cEl.current!.getContext("2d")!;
+  //   if (snapshotData.imageData.length === 0) {
+  //     reset();
+  //     return;
+  //   }
+  //   if (snapshotData.imageData.length === 1) {
+  //     // ctx.putImageData(snapshotData.imageData.pop()!, 0, 0);
+  //     reset();
+  //     return;
+  //   }
+  //   snapshotData.index--;
+  //   if (snapshotData.index <= 0) snapshotData.index = 0;
+  //   snapshotData.imageData.pop();
+  //   ctx.putImageData(snapshotData.imageData[snapshotData.index], 0, 0);
+  // }
   return (
     <div className="">
-      <button onClick={reset}>清除</button>
+      {/* <button onClick={reset}>清除</button>
+      <button onClick={undo}>撤销</button> */}
       <canvas
         ref={cEl}
         width="400"
