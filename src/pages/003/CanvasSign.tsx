@@ -2,6 +2,12 @@ import { useEffect, useRef } from "react";
 
 function CanvasSign() {
   const cEl = useRef<HTMLCanvasElement>(null);
+  function reset() {
+    const ctx = cEl.current!.getContext("2d")!;
+    ctx.save();
+    ctx.clearRect(0, 0, 400, 400);
+    ctx.restore();
+  }
   useEffect(() => {
     if (!cEl.current) return;
     const ctx = cEl.current.getContext("2d")!;
@@ -31,8 +37,14 @@ function CanvasSign() {
     });
   }, []);
   return (
-    <div className="bg-[#eee]">
-      <canvas ref={cEl} width="400" height="400" className="border"></canvas>
+    <div className="">
+      <button onClick={reset}>清除</button>
+      <canvas
+        ref={cEl}
+        width="400"
+        height="400"
+        className="border bg-[#eee]"
+      ></canvas>
     </div>
   );
 }
