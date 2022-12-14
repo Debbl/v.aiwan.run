@@ -6,6 +6,7 @@ const Index = lazy(() => import("~/pages/Index"));
 const Clock = lazy(() => import("~/pages/000/Clock"));
 const SolarSystem = lazy(() => import("~/pages/001/SolarSystem"));
 const MouseFollowing = lazy(() => import("~/pages/002/MouseFollowing"));
+const Triangle = lazy(() => import("~/pages/003/Triangle"));
 
 const routes: RouteObject[] = [
   {
@@ -27,6 +28,11 @@ const routes: RouteObject[] = [
     id: "Mouse Following",
     path: "/002",
     element: <MouseFollowing />,
+  },
+  {
+    id: "Triangle",
+    path: "/003",
+    element: <Triangle />,
   },
 ];
 const router = createBrowserRouter(routes);
