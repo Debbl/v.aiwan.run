@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "dat.gui": "^0.7.9",
+    "draco3dgltf": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.2",
@@ -22,6 +23,7 @@
     "@iconify/icons-carbon": "^1.2.10",
     "@iconify/react": "^4.0.0",
     "@types/dat.gui": "^0.7.7",
+    "@types/draco3dgltf": "^1.4.0",
     "@types/node": "^18.11.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
