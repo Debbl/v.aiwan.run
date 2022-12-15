@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Sun from "./images/sun.png";
 import Moon from "./images/moon.png";
 import Earth from "./images/earth.png";
 
-function SolarSystem() {
+const SolarSystem: React.FC = () => {
   const cEl = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const ctx = cEl.current!.getContext("2d")!;
@@ -61,5 +61,5 @@ function SolarSystem() {
       ></canvas>
     </div>
   );
-}
+};
 export default SolarSystem;

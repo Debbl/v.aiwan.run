@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./style.css";
 
-function Clock() {
+const Clock: React.FC = () => {
   const cEl = useRef<HTMLCanvasElement>(null);
   const hoursEl = useRef<HTMLDivElement>(null);
   const minutesEl = useRef<HTMLDivElement>(null);
@@ -167,6 +167,6 @@ function Clock() {
       </div>
     </div>
   );
-}
+};
 
 export default Clock;

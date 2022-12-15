@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Particle from "./utils/Particle";
 
 export interface Cursor {
@@ -6,7 +6,7 @@ export interface Cursor {
   y: number;
 }
 
-function MouseFollowing() {
+const MouseFollowing: React.FC = () => {
   const containerEl = useRef<HTMLDivElement>(null);
   const cEl = useRef<HTMLCanvasElement>(null);
 
@@ -67,5 +67,5 @@ function MouseFollowing() {
       <canvas ref={cEl} width="600" height="400" className=""></canvas>
     </div>
   );
-}
+};
 export default MouseFollowing;
