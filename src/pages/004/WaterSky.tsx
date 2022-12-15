@@ -52,9 +52,11 @@ const WaterSky: React.FC = () => {
     });
     // water
     const waterGeometry = new THREE.CircleGeometry(1000, 64);
+    const Water1Texture = textureLoader.load(water1Img);
+    const Water2Texture = textureLoader.load(water2Img);
     const water = new Water(waterGeometry, {
-      normalMap0: textureLoader.load(water1Img),
-      normalMap1: textureLoader.load(water2Img),
+      normalMap0: Water1Texture,
+      normalMap1: Water2Texture,
       textureWidth: 1024,
       textureHeight: 1024,
       color: 0xeeeeff,
