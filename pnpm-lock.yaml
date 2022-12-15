@@ -6,7 +6,6 @@ specifiers:
   '@iconify/icons-carbon': ^1.2.12
   '@iconify/react': ^4.0.1
   '@types/dat.gui': ^0.7.7
-  '@types/draco3dgltf': ^1.4.0
   '@types/node': ^18.11.15
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
@@ -14,7 +13,6 @@ specifiers:
   '@vitejs/plugin-react': ^3.0.0
   autoprefixer: ^10.4.13
   dat.gui: ^0.7.9
-  draco3dgltf: ^1.5.5
   eslint: ^8.29.0
   postcss: ^8.4.20
   prettier: ^2.8.1
@@ -29,7 +27,6 @@ specifiers:
 
 dependencies:
   dat.gui: 0.7.9
-  draco3dgltf: 1.5.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router: 6.4.5_react@18.2.0
@@ -42,7 +39,6 @@ devDependencies:
   '@iconify/icons-carbon': 1.2.12
   '@iconify/react': 4.0.1_react@18.2.0
   '@types/dat.gui': 0.7.7
-  '@types/draco3dgltf': 1.4.0
   '@types/node': 18.11.15
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
@@ -707,16 +703,6 @@ packages:
     resolution: {integrity: sha512-CxLCme0He5Jk3uQwfO/fGZMyNhb/ypANzqX0yU9lviBQMlen5SOvQTBQ/Cd9x5mFlUAK5Tk8RgvTyLj1nYkz+w==}
     dev: true
 
-  /@types/draco3d/1.4.2:
-    resolution: {integrity: sha512-goh23EGr6CLV6aKPwN1p8kBD/7tT5V/bLpToSbarKrwVejqNrspVrv8DhliteYkkhZYrlq/fwKZRRUzH4XN88w==}
-    dev: true
-
-  /@types/draco3dgltf/1.4.0:
-    resolution: {integrity: sha512-vo/GQzRmdYaae7uNiJd2QE/zfeMHgRPfWeqoKtCwWSTBwCd+XzrFrJEcgubooA4ZJNTEcx8+N8BUbCx9gIlR3Q==}
-    dependencies:
-      '@types/draco3d': 1.4.2
-    dev: true
-
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -1352,10 +1338,6 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
     dev: true
-
-  /draco3dgltf/1.5.5:
-    resolution: {integrity: sha512-JrtTBTZHedeXCaFEIELZf71SGAK+j0LgaLW0xIBUGNNMEYzmoF72jUutLuMpY3go/bulwbd/W7PZsnJG0IQLjA==}
-    dev: false
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
