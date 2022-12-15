@@ -7,7 +7,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import skyImg from "./assets/sky.jpg";
 import water1Img from "./assets/Water_1_M_Normal.jpg";
-import water2Img from "./assets/water_2_M_Normal.jpg";
+import water2Img from "./assets/Water_2_M_Normal.jpg";
 import islandModel from "./assets/island.glb";
 import envHDR from "./assets/050.hdr";
 
