@@ -1,14 +1,18 @@
 /// <reference types="vite/client" />
 
-module "*.exr" {
+declare module "*.jpg" {
   const content: any;
   export default content;
 }
-module "*.glb" {
+declare module "*.exr" {
   const content: any;
   export default content;
 }
-module "*.hdr" {
+declare module "*.glb" {
+  const content: any;
+  export default content;
+}
+declare module "*.hdr" {
   const content: any;
   export default content;
 }
