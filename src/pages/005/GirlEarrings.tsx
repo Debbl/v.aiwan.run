@@ -29,9 +29,11 @@ const GirlEarrings: React.FC = () => {
         scene.add(m.scene);
       },
       (progress) => {
+        // eslint-disable-next-line no-console
         console.log(progress);
       },
       (err) => {
+        // eslint-disable-next-line no-console
         console.log(err);
       },
     );
