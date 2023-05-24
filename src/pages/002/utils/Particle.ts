@@ -13,7 +13,7 @@ class Particle {
     y: number,
     particleTrailWidth: number,
     strokeColor: string,
-    rotateSpeed: number
+    rotateSpeed: number,
   ) {
     this.x = x;
     this.y = y;

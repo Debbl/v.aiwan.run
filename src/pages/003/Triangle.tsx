@@ -8,12 +8,7 @@ const Triangle: React.FC = () => {
   useEffect(() => {
     const el = triangleEl.current!;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      el.clientWidth / el.clientHeight,
-      0.1,
-      1000
-    );
+    const camera = new THREE.PerspectiveCamera(75, el.clientWidth / el.clientHeight, 0.1, 1000);
     camera.position.set(0, 0, 10);
     scene.add(camera);
 
@@ -23,11 +18,7 @@ const Triangle: React.FC = () => {
       for (let j = 0; j < 9; j++) {
         vertices[j] = Math.random() * 10 - 5;
       }
-      const color = new THREE.Color(
-        Math.random(),
-        Math.random(),
-        Math.random()
-      );
+      const color = new THREE.Color(Math.random(), Math.random(), Math.random());
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
       const material = new THREE.MeshBasicMaterial({

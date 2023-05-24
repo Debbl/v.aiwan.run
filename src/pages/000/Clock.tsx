@@ -18,9 +18,7 @@ const Clock: React.FC = () => {
       const seconds = time.getSeconds();
       secondsEl.current!.style.animationDelay = `${-seconds}s`;
       minutesEl.current!.style.animationDelay = `-${minutes * 60 + seconds}s`;
-      hoursEl.current!.style.animationDelay = `-${
-        hours * 60 * 60 + minutes * 60 + seconds
-      }s`;
+      hoursEl.current!.style.animationDelay = `-${hours * 60 * 60 + minutes * 60 + seconds}s`;
     }
     cssInit();
     function drawBg() {
@@ -63,9 +61,7 @@ const Clock: React.FC = () => {
     function drawMinutesHand(minutes: number, seconds: number) {
       ctx.save();
       ctx.translate(150, 150);
-      ctx.rotate(
-        ((Math.PI * 2) / 60) * minutes + ((Math.PI * 2) / 60 / 60) * seconds
-      );
+      ctx.rotate(((Math.PI * 2) / 60) * minutes + ((Math.PI * 2) / 60 / 60) * seconds);
       ctx.lineWidth = 3;
       ctx.lineCap = "round";
       ctx.beginPath();
@@ -80,7 +76,7 @@ const Clock: React.FC = () => {
       ctx.rotate(
         ((Math.PI * 2) / 12) * hours +
           ((Math.PI * 2) / 12 / 60) * minutes +
-          ((Math.PI * 2) / 12 / 60 / 60) * seconds
+          ((Math.PI * 2) / 12 / 60 / 60) * seconds,
       );
       ctx.lineWidth = 5;
       ctx.lineCap = "round";
@@ -150,12 +146,7 @@ const Clock: React.FC = () => {
   }, []);
   return (
     <div className="flex min-w-[300px] flex-col sm:flex-row mt-16 justify-center items-center">
-      <canvas
-        ref={cEl}
-        width="300"
-        height="300"
-        className="border bg-black rounded-[50px]"
-      >
+      <canvas ref={cEl} width="300" height="300" className="border bg-black rounded-[50px]">
         你的浏览器不支持 Canvas。请升级您的浏览器！
       </canvas>
       <div className="clock-css-container">

@@ -26,15 +26,11 @@ const SolarSystem: React.FC = () => {
       // earth
       ctx.save();
       ctx.translate(150, 150);
-      ctx.rotate(
-        ((Math.PI * 2) / 60) * seconds + ((Math.PI * 2) / 60000) * milliseconds
-      );
+      ctx.rotate(((Math.PI * 2) / 60) * seconds + ((Math.PI * 2) / 60000) * milliseconds);
       // moon
       ctx.save();
       ctx.translate(105, 0);
-      ctx.rotate(
-        ((Math.PI * 2) / 6) * seconds + ((Math.PI * 2) / 6000) * milliseconds
-      );
+      ctx.rotate(((Math.PI * 2) / 6) * seconds + ((Math.PI * 2) / 6000) * milliseconds);
       ctx.translate(28.5, 0);
       ctx.drawImage(moonImage, -3.5, -3.5);
       ctx.restore();
@@ -53,12 +49,7 @@ const SolarSystem: React.FC = () => {
   }, []);
   return (
     <div className="min-w-[375px]">
-      <canvas
-        ref={cEl}
-        width="300"
-        height="300"
-        className="border mx-auto"
-      ></canvas>
+      <canvas ref={cEl} width="300" height="300" className="border mx-auto"></canvas>
     </div>
   );
 };

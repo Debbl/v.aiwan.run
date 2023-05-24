@@ -30,7 +30,7 @@ const MouseFollowing: React.FC = () => {
           cursor.x = e.touches[0].clientX;
           cursor.y = e.touches[0].clientY;
         },
-        { passive: false }
+        { passive: false },
       );
       generateParticles(101);
       requestAnimationFrame(anim);
@@ -48,7 +48,7 @@ const MouseFollowing: React.FC = () => {
           clientHeight / 2,
           4,
           generateColor(),
-          0.02
+          0.02,
         );
       });
     }
