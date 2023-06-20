@@ -1,8 +1,9 @@
 {
   "name": "v.aiwan.run",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "author": "Debbl <me@aiwan.run> (https://github.com/Debbl)",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
