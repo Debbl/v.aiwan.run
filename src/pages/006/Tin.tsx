@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import P5 from "p5";
-import colors from "./colors";
-import Dot from "./Dot";
+import colors from "./assets/colors";
+import Dot from "./composables/Dot";
 import { useDark } from "./hooks/useDark";
 
 const ITEMS_COUNT = 32;
@@ -64,7 +64,7 @@ const Tin: React.FC = () => {
   }, [currentTheme]);
 
   return (
-    <div className={`w-screen h-screen fixed flex t-0 justify-center ${bgTheme}`}>
+    <div className={`fixed flex h-screen w-screen justify-center p-10 ${bgTheme}`}>
       <div ref={elRef}></div>
     </div>
   );
