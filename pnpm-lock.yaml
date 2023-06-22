@@ -30,6 +30,9 @@ devDependencies:
   '@debbl/eslint-config-react':
     specifier: ^0.0.26
     version: 0.0.26(eslint@8.43.0)(typescript@4.9.5)
+  '@debbl/eslint-config-tailwindcss':
+    specifier: ^0.0.45
+    version: 0.0.45(eslint@8.43.0)(tailwindcss@3.3.2)
   '@iconify/icons-carbon':
     specifier: ^1.2.18
     version: 1.2.18
@@ -378,6 +381,17 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
       - typescript
+    dev: true
+
+  /@debbl/eslint-config-tailwindcss@0.0.45(eslint@8.43.0)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-FUx5MfJeFze1Mn7tb5Ox7SmRn8APLopgugk11GiXf+ncWEgBCiHtqzJEfuKrTus36jopgYmtoB0Zy0Z5fnKW+g==}
+    peerDependencies:
+      eslint: '>=8.33.0'
+    dependencies:
+      eslint: 8.43.0
+      eslint-plugin-tailwindcss: 3.12.1(tailwindcss@3.3.2)
+    transitivePeerDependencies:
+      - tailwindcss
     dev: true
 
   /@debbl/eslint-config-ts@0.0.26(eslint@8.43.0)(typescript@4.9.5):
@@ -1679,6 +1693,17 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.8
+    dev: true
+
+  /eslint-plugin-tailwindcss@3.12.1(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-LyIRV0rx6prTpJZsSCXSNJ34Yry3Nj9OJwvzh1xTsiG6+UCnAPW1Bx41s7vZzUDKMlwFgpUN9Me+NK12T4DHYg==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: ^3.3.2
+    dependencies:
+      fast-glob: 3.2.12
+      postcss: 8.4.24
+      tailwindcss: 3.3.2
     dev: true
 
   /eslint-plugin-unicorn@43.0.2(eslint@8.43.0):
