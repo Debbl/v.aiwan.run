@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import P5 from "p5";
 import colors from "./colors";
 import Dot from "./Dot";
+import { useDark } from "./hooks/useDark";
 
 const ITEMS_COUNT = 32;
 
 const Tin: React.FC = () => {
   const elRef = useRef<HTMLDivElement>(null);
-  const [currentTheme, setCurrentTheme] = useState<"dark" | "light">("light");
+  const [isDark] = useDark();
+
+  const currentTheme = isDark ? "dark" : "light";
   const bgTheme = currentTheme === "light" ? "bg-[#fafafa]" : "bg-black";
 
   const createP5 = (s: (...args: any[]) => any, el?: HTMLElement) => {
@@ -64,7 +67,7 @@ const Tin: React.FC = () => {
 
   return (
     <div className={`w-screen h-screen fixed flex t-0 justify-center ${bgTheme}`}>
-      <div ref={elRef}>Tin</div>
+      <div ref={elRef}></div>
     </div>
   );
 };
