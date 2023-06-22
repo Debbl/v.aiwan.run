@@ -3,7 +3,7 @@ import router from "./router";
 
 function App() {
   return (
-    <div className="flex items-center mt-32 flex-col">
+    <div>
       <RouterProvider router={router} />
     </div>
   );
