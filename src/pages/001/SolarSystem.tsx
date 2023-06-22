@@ -49,7 +49,7 @@ const SolarSystem: React.FC = () => {
   }, []);
   return (
     <div className="min-w-[375px]">
-      <canvas ref={cEl} width="300" height="300" className="border mx-auto"></canvas>
+      <canvas ref={cEl} width="300" height="300" className="mx-auto border"></canvas>
     </div>
   );
 };

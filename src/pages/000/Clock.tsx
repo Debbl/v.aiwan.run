@@ -145,8 +145,8 @@ const Clock: React.FC = () => {
     requestAnimationFrame(draw);
   }, []);
   return (
-    <div className="flex min-w-[300px] flex-col sm:flex-row mt-16 justify-center items-center">
-      <canvas ref={cEl} width="300" height="300" className="border bg-black rounded-[50px]">
+    <div className="mt-16 flex min-w-[300px] flex-col items-center justify-center sm:flex-row">
+      <canvas ref={cEl} width="300" height="300" className="rounded-[50px] border bg-black">
         你的浏览器不支持 Canvas。请升级您的浏览器！
       </canvas>
       <div className="clock-css-container">
