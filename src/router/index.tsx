@@ -9,6 +9,7 @@ const MouseFollowing = lazy(() => import("~/pages/002/MouseFollowing"));
 const Triangle = lazy(() => import("~/pages/003/Triangle"));
 const WaterSky = lazy(() => import("~/pages/004/WaterSky"));
 const GirlEarrings = lazy(() => import("~/pages/005/GirlEarrings"));
+const Tin = lazy(() => import("~/pages/006/Tin"));
 
 const routes: RouteObject[] = [
   {
@@ -45,6 +46,11 @@ const routes: RouteObject[] = [
     id: "Girl Earrings",
     path: "/005",
     element: <GirlEarrings />,
+  },
+  {
+    id: "Tin",
+    path: "/006",
+    element: <Tin />,
   },
 ];
 const router = createBrowserRouter(routes);

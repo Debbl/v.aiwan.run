@@ -9,13 +9,13 @@ function Index() {
   }));
 
   return (
-    <div className="flex items-center mt-32 flex-col">
+    <div className="mt-32 flex flex-col items-center">
       <ul>
         {IndexArr.map((i) => (
           <li key={i.pathName}>
             <a
               href={i.path}
-              className="inline-block text-gray-400 ease-in duration-100 hover:text-gray-600 hover:scale-105"
+              className="inline-block text-gray-400 duration-100 ease-in hover:scale-105 hover:text-gray-600"
             >
               <span className="opacity-60">{i.pathName}</span>{" "}
               <span>{i.id}</span>

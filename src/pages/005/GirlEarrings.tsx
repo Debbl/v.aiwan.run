@@ -100,7 +100,7 @@ const GirlEarrings: React.FC = () => {
       <div ref={girlEarringsEl} className="fixed inset-0"></div>
       {loaded !== 86328 && (
         <div>
-          <div className="fixed inset-0 flex justify-center items-center bg-white">
+          <div className="fixed inset-0 flex items-center justify-center bg-white">
             loading {((loaded / 86328) * 100).toFixed(0)}%
           </div>
         </div>
