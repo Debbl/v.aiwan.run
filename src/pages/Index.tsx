@@ -17,7 +17,8 @@ function Index() {
               href={i.path}
               className="inline-block text-gray-400 ease-in duration-100 hover:text-gray-600 hover:scale-105"
             >
-              <span className="opacity-60">{i.pathName}</span> <span>{i.id}</span>
+              <span className="opacity-60">{i.pathName}</span>
+              <span>{i.id}</span>
             </a>
           </li>
         ))}
