@@ -45,7 +45,11 @@ class Dot {
     const itemCenter = [(this.rect.x + 0.5) * itemWidth, canvasLength / 2];
     this.s.fill([...this.rect.color, this.rect.opacity]);
 
-    this.s.rect(...(itemCenter as [number, number]), itemWidth / 2 - 1, (canvasLength / 2) * value);
+    this.s.rect(
+      ...(itemCenter as [number, number]),
+      itemWidth / 2 - 1,
+      (canvasLength / 2) * value
+    );
   }
 }
 

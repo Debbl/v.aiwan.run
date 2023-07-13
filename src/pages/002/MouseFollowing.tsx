@@ -65,7 +65,7 @@ const MouseFollowing: React.FC = () => {
   return (
     <div
       ref={containerEl}
-      className="flex justify-center h-screen items-center"
+      className="flex h-screen items-center justify-center"
     >
       <canvas ref={cEl} width="600" height="400" className=""></canvas>
     </div>

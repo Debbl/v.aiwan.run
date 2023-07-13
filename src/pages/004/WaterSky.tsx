@@ -16,7 +16,12 @@ const WaterSky: React.FC = () => {
   useEffect(() => {
     const el = waterSkyEl.current!;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, el.clientWidth / el.clientHeight, 0.1, 2000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      el.clientWidth / el.clientHeight,
+      0.1,
+      2000
+    );
     camera.position.set(-50, 50, 130);
     camera.aspect = el.clientWidth / el.clientHeight;
     camera.updateProjectionMatrix();

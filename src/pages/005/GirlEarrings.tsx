@@ -17,7 +17,12 @@ const GirlEarrings: React.FC = () => {
   useEffect(() => {
     const el = girlEarringsEl.current!;
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, el.clientWidth / el.clientHeight, 0.1, 2000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      el.clientWidth / el.clientHeight,
+      0.1,
+      2000
+    );
     camera.position.set(0, 0, 6);
     camera.aspect = el.clientWidth / el.clientHeight;
     camera.updateProjectionMatrix();
@@ -41,7 +46,7 @@ const GirlEarrings: React.FC = () => {
         (err) => {
           // eslint-disable-next-line no-console
           console.log(err);
-        },
+        }
       );
     });
 
@@ -65,7 +70,7 @@ const GirlEarrings: React.FC = () => {
       (err) => {
         // eslint-disable-next-line no-console
         console.log(err);
-      },
+      }
     );
 
     // render

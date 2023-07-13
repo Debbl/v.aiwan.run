@@ -35,7 +35,13 @@ const animationPlay = (el: HTMLElement, bgColor: string, mathFn: MathFn) => {
     };
 
     s.mouseMoved = () => {
-      if (s.mouseX < 0 || s.mouseY > s.width || s.mouseY < 0 || s.mouseY > s.height) return;
+      if (
+        s.mouseX < 0 ||
+        s.mouseY > s.width ||
+        s.mouseY < 0 ||
+        s.mouseY > s.height
+      )
+        return;
 
       const hoveredPointIndex = Math.floor(s.mouseX / (s.width / ITEMS_COUNT));
       dots.forEach((dot, i) => {
@@ -72,7 +78,11 @@ const Tin: React.FC = () => {
   }, [fn]);
 
   useEffect(() => {
-    const p5 = animationPlay(elRef.current!, colors[currentTheme].background, mathFn);
+    const p5 = animationPlay(
+      elRef.current!,
+      colors[currentTheme].background,
+      mathFn
+    );
 
     return () => {
       p5 && p5.remove();
@@ -80,7 +90,9 @@ const Tin: React.FC = () => {
   }, [currentTheme, mathFn]);
 
   return (
-    <div className={`fixed flex h-screen w-screen flex-col items-center p-10 ${bgTheme}`}>
+    <div
+      className={`fixed flex h-screen w-screen flex-col items-center p-10 ${bgTheme}`}
+    >
       <div ref={elRef}></div>
       <div className="mt-6 flex flex-col items-start gap-y-2">
         <div className="opacity-30">{"(t, i, x) => "}</div>

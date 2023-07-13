@@ -4,7 +4,8 @@ const useDark = () => {
   const { current: domEl } = useRef(document.documentElement);
   const [isDark, setDark] = useState(
     () =>
-      window.matchMedia("(prefers-color-scheme: dark)").matches || domEl.classList.contains("dark"),
+      window.matchMedia("(prefers-color-scheme: dark)").matches ||
+      domEl.classList.contains("dark")
   );
 
   useEffect(() => {
