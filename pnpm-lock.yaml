@@ -29,14 +29,14 @@ dependencies:
 
 devDependencies:
   '@debbl/eslint-config-prettier':
-    specifier: ^0.0.45
-    version: 0.0.45(eslint@8.43.0)
+    specifier: ^0.0.46
+    version: 0.0.46(eslint@8.43.0)
   '@debbl/eslint-config-react':
-    specifier: ^0.0.45
-    version: 0.0.45(eslint@8.43.0)(typescript@4.9.5)
+    specifier: ^0.0.47
+    version: 0.0.47(eslint@8.43.0)(typescript@4.9.5)
   '@debbl/eslint-config-tailwindcss':
-    specifier: ^0.0.45
-    version: 0.0.45(eslint@8.43.0)(tailwindcss@3.3.2)
+    specifier: ^0.0.46
+    version: 0.0.46(eslint@8.43.0)(tailwindcss@3.3.2)
   '@iconify/icons-carbon':
     specifier: ^1.2.18
     version: 1.2.18
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^18.2.14
     version: 18.2.14
   '@types/react-dom':
-    specifier: ^18.2.6
-    version: 18.2.6
+    specifier: ^18.2.7
+    version: 18.2.7
   '@types/three':
     specifier: ^0.146.0
     version: 0.146.0
@@ -66,13 +66,13 @@ devDependencies:
     version: 3.1.0(vite@4.3.9)
   autoprefixer:
     specifier: ^10.4.14
-    version: 10.4.14(postcss@8.4.24)
+    version: 10.4.14(postcss@8.4.25)
   eslint:
     specifier: ^8.43.0
     version: 8.43.0
   postcss:
-    specifier: ^8.4.24
-    version: 8.4.24
+    specifier: ^8.4.25
+    version: 8.4.25
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
@@ -321,13 +321,12 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@debbl/eslint-config-basic@0.0.45(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint@8.43.0):
-    resolution: {integrity: sha512-KBcuKclU9nIwGf5eciW48QxMlmi1gVNMoSHFhTjC+QzVn10PNJL0bcEjDgROFjJmc/wetgKat/Ti335onpCOdw==}
+  /@debbl/eslint-config-basic@0.0.47(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint@8.43.0):
+    resolution: {integrity: sha512-qGmgIaD38dUXXwYuy+quYbshktkTEXryvNnt6DpVbypnmgk/mhumakQTcdQXlMqttzmAEBTt3WR4qWYrjw+DOw==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
       eslint: 8.43.0
-      eslint-config-standard: 17.0.0(eslint-plugin-import@2.27.5)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.43.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.43.0)
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.61.0)(eslint@8.43.0)
@@ -349,8 +348,8 @@ packages:
       - supports-color
     dev: true
 
-  /@debbl/eslint-config-prettier@0.0.45(eslint@8.43.0):
-    resolution: {integrity: sha512-k4rR8cl3g+M/kD3yBIFmqHw5oQB0iYmCKJDchMLLAuGgRnlrI9ypbd9PY7Sy7vR3iPjpHwl7AFvNNyzNGgRajg==}
+  /@debbl/eslint-config-prettier@0.0.46(eslint@8.43.0):
+    resolution: {integrity: sha512-0Lu2zc9OKtAbJH9S16BGUAPZR8neYlWJ9x360Wbge1fSUjgrBa0GbROX3H7IKkzBzRBlX2u4XvTcbXLjJG19VQ==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
@@ -360,12 +359,12 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@debbl/eslint-config-react@0.0.45(eslint@8.43.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-CVA3t7ifF2Z8KrO1kEGEjm1P5BEtLqp8Buk4Wa92IDpwwDAqID3l47QsN6xI4h80K+Wra+rHYOUg26QvPgkinw==}
+  /@debbl/eslint-config-react@0.0.47(eslint@8.43.0)(typescript@4.9.5):
+    resolution: {integrity: sha512-5S2kdLod2fNgUSF4yLSjLdOlMqCCjAYG24RRPv3psMh2qsoOEfgZwaCLJoc/pdmTXC2lFGy9KBD6z2haHUhHqQ==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
-      '@debbl/eslint-config-ts': 0.0.45(eslint@8.43.0)(typescript@4.9.5)
+      '@debbl/eslint-config-ts': 0.0.47(eslint@8.43.0)(typescript@4.9.5)
       eslint: 8.43.0
       eslint-plugin-react: 7.32.2(eslint@8.43.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.43.0)
@@ -376,24 +375,24 @@ packages:
       - typescript
     dev: true
 
-  /@debbl/eslint-config-tailwindcss@0.0.45(eslint@8.43.0)(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-FUx5MfJeFze1Mn7tb5Ox7SmRn8APLopgugk11GiXf+ncWEgBCiHtqzJEfuKrTus36jopgYmtoB0Zy0Z5fnKW+g==}
+  /@debbl/eslint-config-tailwindcss@0.0.46(eslint@8.43.0)(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-V9wxWUhQwjMspGb9wYcY5KOdZ2rBHQTsH/EhcywpBRh+tPPRrY5/b09ezIioivFPotPw0r2S4zgUfbXkecioYg==}
     peerDependencies:
       eslint: '>=8.33.0'
     dependencies:
       eslint: 8.43.0
-      eslint-plugin-tailwindcss: 3.12.1(tailwindcss@3.3.2)
+      eslint-plugin-tailwindcss: 3.13.0(tailwindcss@3.3.2)
     transitivePeerDependencies:
       - tailwindcss
     dev: true
 
-  /@debbl/eslint-config-ts@0.0.45(eslint@8.43.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-l6T8XqEncRX2vdjuQNZizvh0IpjSfnaO5XOLGGHMnY9/7XElOxxMswrPJSAwXp81DFcO7RCTzvFSbOBhuDj3BQ==}
+  /@debbl/eslint-config-ts@0.0.47(eslint@8.43.0)(typescript@4.9.5):
+    resolution: {integrity: sha512-IH1WhIp43DfMkEcE0d8+NHvyGQvUE26aSKiZnjCR2RK5LW6V4EidBIibUf1EA0bY+vGif1F1UjQrKGI44g5DNQ==}
     peerDependencies:
       eslint: '>=8.24.0'
       typescript: '>=4.8.4'
     dependencies:
-      '@debbl/eslint-config-basic': 0.0.45(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint@8.43.0)
+      '@debbl/eslint-config-basic': 0.0.47(@typescript-eslint/eslint-plugin@5.61.0)(@typescript-eslint/parser@5.61.0)(eslint@8.43.0)
       '@typescript-eslint/eslint-plugin': 5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.43.0)(typescript@4.9.5)
       '@typescript-eslint/parser': 5.61.0(eslint@8.43.0)(typescript@4.9.5)
       eslint: 8.43.0
@@ -776,8 +775,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.2.6:
-    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
+  /@types/react-dom@18.2.7:
+    resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
       '@types/react': 18.2.14
     dev: true
@@ -1066,7 +1065,7 @@ packages:
       get-intrinsic: 1.1.3
     dev: true
 
-  /autoprefixer@10.4.14(postcss@8.4.24):
+  /autoprefixer@10.4.14(postcss@8.4.25):
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -1078,7 +1077,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.24
+      postcss: 8.4.25
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -1467,20 +1466,6 @@ packages:
       eslint: 8.43.0
     dev: true
 
-  /eslint-config-standard@17.0.0(eslint-plugin-import@2.27.5)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.43.0):
-    resolution: {integrity: sha512-/2ks1GKyqSOkH7JFvXJicu0iMpoojkwB+f5Du/1SC0PtBL+s8v30k9njRZ21pm2drKYm2342jFnGWzttxPmZVg==}
-    peerDependencies:
-      eslint: ^8.0.1
-      eslint-plugin-import: ^2.25.2
-      eslint-plugin-n: ^15.0.0
-      eslint-plugin-promise: ^6.0.0
-    dependencies:
-      eslint: 8.43.0
-      eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.61.0)(eslint@8.43.0)
-      eslint-plugin-n: 15.7.0(eslint@8.43.0)
-      eslint-plugin-promise: 6.1.1(eslint@8.43.0)
-    dev: true
-
   /eslint-import-resolver-node@0.3.7:
     resolution: {integrity: sha512-gozW2blMLJCeFpBwugLTGyvVjNoeo1knonXAcatC6bjPBZitotxdWf7Gimr25N4c0AAOo4eOUfaG82IJPDpqCA==}
     dependencies:
@@ -1686,14 +1671,14 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-tailwindcss@3.12.1(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-LyIRV0rx6prTpJZsSCXSNJ34Yry3Nj9OJwvzh1xTsiG6+UCnAPW1Bx41s7vZzUDKMlwFgpUN9Me+NK12T4DHYg==}
+  /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-Fcep4KDRLWaK3KmkQbdyKHG0P4GdXFmXdDaweTIPcgOP60OOuWFbh1++dufRT28Q4zpKTKaHwTsXPJ4O/EjU2Q==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: ^3.3.2
     dependencies:
       fast-glob: 3.2.12
-      postcss: 8.4.24
+      postcss: 8.4.25
       tailwindcss: 3.3.2
     dev: true
 
@@ -2767,29 +2752,29 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.24):
+  /postcss-import@15.1.0(postcss@8.4.25):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.25
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.2
     dev: true
 
-  /postcss-js@4.0.1(postcss@8.4.24):
+  /postcss-js@4.0.1(postcss@8.4.25):
     resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
     engines: {node: ^12 || ^14 || >= 16}
     peerDependencies:
       postcss: ^8.4.21
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.24
+      postcss: 8.4.25
     dev: true
 
-  /postcss-load-config@4.0.1(postcss@8.4.24):
+  /postcss-load-config@4.0.1(postcss@8.4.25):
     resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
     engines: {node: '>= 14'}
     peerDependencies:
@@ -2802,17 +2787,17 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 8.4.24
+      postcss: 8.4.25
       yaml: 2.1.3
     dev: true
 
-  /postcss-nested@6.0.1(postcss@8.4.24):
+  /postcss-nested@6.0.1(postcss@8.4.25):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.25
       postcss-selector-parser: 6.0.11
     dev: true
 
@@ -2828,8 +2813,8 @@ packages:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
     dev: true
 
-  /postcss@8.4.24:
-    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
+  /postcss@8.4.25:
+    resolution: {integrity: sha512-7taJ/8t2av0Z+sQEvNzCkpDynl0tX3uJMCODi6nT3PfASC7dYCWV9aQ+uiCf+KBD4SEFcu+GvJdGdwzQ6OSjCw==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -3222,11 +3207,11 @@ packages:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.24
-      postcss-import: 15.1.0(postcss@8.4.24)
-      postcss-js: 4.0.1(postcss@8.4.24)
-      postcss-load-config: 4.0.1(postcss@8.4.24)
-      postcss-nested: 6.0.1(postcss@8.4.24)
+      postcss: 8.4.25
+      postcss-import: 15.1.0(postcss@8.4.25)
+      postcss-js: 4.0.1(postcss@8.4.25)
+      postcss-load-config: 4.0.1(postcss@8.4.25)
+      postcss-nested: 6.0.1(postcss@8.4.25)
       postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
       resolve: 1.22.2
@@ -3393,7 +3378,7 @@ packages:
     dependencies:
       '@types/node': 18.16.19
       esbuild: 0.17.19
-      postcss: 8.4.24
+      postcss: 8.4.25
       rollup: 3.23.0
     optionalDependencies:
       fsevents: 2.3.2
