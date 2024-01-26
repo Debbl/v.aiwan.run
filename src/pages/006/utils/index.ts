@@ -7,7 +7,7 @@ const replaceReg = (rawExpression: string) => {
 
 export function getMathFn(inputParam: string, expression: string): MathFn {
   const MathContext = `const {${Object.getOwnPropertyNames(Math).join(
-    ","
+    ",",
   )}}=Math`;
 
   const formatExp = `() => {

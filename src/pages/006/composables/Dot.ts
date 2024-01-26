@@ -48,7 +48,7 @@ class Dot {
     this.s.rect(
       ...(itemCenter as [number, number]),
       itemWidth / 2 - 1,
-      (canvasLength / 2) * value
+      (canvasLength / 2) * value,
     );
   }
 }

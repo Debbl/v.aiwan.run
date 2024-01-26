@@ -64,7 +64,7 @@ const Clock: React.FC = () => {
       ctx.save();
       ctx.translate(150, 150);
       ctx.rotate(
-        ((Math.PI * 2) / 60) * minutes + ((Math.PI * 2) / 60 / 60) * seconds
+        ((Math.PI * 2) / 60) * minutes + ((Math.PI * 2) / 60 / 60) * seconds,
       );
       ctx.lineWidth = 3;
       ctx.lineCap = "round";
@@ -80,7 +80,7 @@ const Clock: React.FC = () => {
       ctx.rotate(
         ((Math.PI * 2) / 12) * hours +
           ((Math.PI * 2) / 12 / 60) * minutes +
-          ((Math.PI * 2) / 12 / 60 / 60) * seconds
+          ((Math.PI * 2) / 12 / 60 / 60) * seconds,
       );
       ctx.lineWidth = 5;
       ctx.lineCap = "round";

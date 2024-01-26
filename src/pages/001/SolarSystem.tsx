@@ -27,13 +27,13 @@ const SolarSystem: React.FC = () => {
       ctx.save();
       ctx.translate(150, 150);
       ctx.rotate(
-        ((Math.PI * 2) / 60) * seconds + ((Math.PI * 2) / 60000) * milliseconds
+        ((Math.PI * 2) / 60) * seconds + ((Math.PI * 2) / 60000) * milliseconds,
       );
       // moon
       ctx.save();
       ctx.translate(105, 0);
       ctx.rotate(
-        ((Math.PI * 2) / 6) * seconds + ((Math.PI * 2) / 6000) * milliseconds
+        ((Math.PI * 2) / 6) * seconds + ((Math.PI * 2) / 6000) * milliseconds,
       );
       ctx.translate(28.5, 0);
       ctx.drawImage(moonImage, -3.5, -3.5);

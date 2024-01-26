@@ -20,7 +20,7 @@ const WaterSky: React.FC = () => {
       75,
       el.clientWidth / el.clientHeight,
       0.1,
-      2000
+      2000,
     );
     camera.position.set(-50, 50, 130);
     camera.aspect = el.clientWidth / el.clientHeight;

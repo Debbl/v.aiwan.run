@@ -81,7 +81,7 @@ const Tin: React.FC = () => {
     const p5 = animationPlay(
       elRef.current!,
       colors[currentTheme].background,
-      mathFn
+      mathFn,
     );
 
     return () => {

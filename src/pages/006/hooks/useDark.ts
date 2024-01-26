@@ -5,7 +5,7 @@ const useDark = () => {
   const [isDark, setDark] = useState(
     () =>
       window.matchMedia("(prefers-color-scheme: dark)").matches ||
-      domEl.classList.contains("dark")
+      domEl.classList.contains("dark"),
   );
 
   useEffect(() => {

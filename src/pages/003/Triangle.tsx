@@ -13,7 +13,7 @@ const Triangle: React.FC = () => {
       75,
       el.clientWidth / el.clientHeight,
       0.1,
-      1000
+      1000,
     );
     camera.position.set(0, 0, 10);
     scene.add(camera);
@@ -27,7 +27,7 @@ const Triangle: React.FC = () => {
       const color = new THREE.Color(
         Math.random(),
         Math.random(),
-        Math.random()
+        Math.random(),
       );
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));

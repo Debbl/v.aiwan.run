@@ -21,7 +21,7 @@ const GirlEarrings: React.FC = () => {
       75,
       el.clientWidth / el.clientHeight,
       0.1,
-      2000
+      2000,
     );
     camera.position.set(0, 0, 6);
     camera.aspect = el.clientWidth / el.clientHeight;
@@ -46,7 +46,7 @@ const GirlEarrings: React.FC = () => {
         (err) => {
           // eslint-disable-next-line no-console
           console.log(err);
-        }
+        },
       );
     });
 
@@ -70,7 +70,7 @@ const GirlEarrings: React.FC = () => {
       (err) => {
         // eslint-disable-next-line no-console
         console.log(err);
-      }
+      },
     );
 
     // render
