@@ -5,6 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 const Triangle: React.FC = () => {
   const triangleEl = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const el = triangleEl.current!;
     const scene = new THREE.Scene();
@@ -54,12 +55,14 @@ const Triangle: React.FC = () => {
     });
     controls.autoRotate = true;
     controls.autoRotateSpeed = 2;
+
     function render() {
       controls.update();
       renderer.render(scene, camera);
       renderer.physicallyCorrectLights = true;
       requestAnimationFrame(render);
     }
+
     requestAnimationFrame(render);
 
     // dat.gui
@@ -67,6 +70,7 @@ const Triangle: React.FC = () => {
     gui.add(controls, "autoRotate").name("自动旋转");
     gui.add(controls, "autoRotateSpeed").name("速度").min(0).max(10);
   }, []);
+
   return <div ref={triangleEl} className="fixed inset-0"></div>;
 };
 

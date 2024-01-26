@@ -9,15 +9,18 @@ function App() {
     <BrowserRouter basename="/">
       <Routes>
         <Route path={routes[0].path} element={routes[0].element} />
+
         {pagesRoutes.map((r) => (
           <Route
             key={r.id}
             path={r.path}
             element={
               <div>
-                <div className="fixed left-0 top-0 z-10">
-                  <button className="h-8 w-8 bg-black/40 text-2xl leading-6 text-gray-50 opacity-60 hover:opacity-100">
-                    <a href="/">{"<"}</a>
+                <div className="fixed bottom-1 left-2 z-10">
+                  <button className="text-gray-800 opacity-0 transition-all duration-300 ease-in hover:opacity-100">
+                    <a href="/" className="underline">
+                      {">cd .."}
+                    </a>
                   </button>
                 </div>
 
