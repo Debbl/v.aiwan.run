@@ -59,7 +59,7 @@ importers:
         version: 0.146.0
       '@vitejs/plugin-react':
         specifier: ^3.1.0
-        version: 3.1.0(vite@4.5.3(@types/node@18.19.10))
+        version: 3.1.0(vite@4.5.10(@types/node@18.19.10))
       autoprefixer:
         specifier: ^10.4.17
         version: 10.4.17(postcss@8.4.33)
@@ -82,8 +82,8 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^4.5.3
-        version: 4.5.3(@types/node@18.19.10)
+        specifier: ^4.5.10
+        version: 4.5.10(@types/node@18.19.10)
 
 packages:
 
@@ -1098,9 +1098,11 @@ packages:
   eslint-define-config@2.1.0:
     resolution: {integrity: sha512-QUp6pM9pjKEVannNAbSJNeRuYwW3LshejfyBBpjeMGaJjaDUpVps4C6KVR8R7dWZnD3i0synmrE36znjTkJvdQ==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   eslint-flat-config-viewer@0.1.11:
     resolution: {integrity: sha512-yPLqlKJrz5LX2H3IG9iXAMr5tsqgXkZ8HGwr8qZGlPgWy5GEhmmUTAWOGfP3FT26jk4Qrx5VsYXAv9M8JCpmYw==}
+    deprecated: Deprecated, use @eslint/config-inspector instead
     hasBin: true
     peerDependencies:
       eslint: ^8.50.0
@@ -1306,6 +1308,7 @@ packages:
   eslint@8.56.0:
     resolution: {integrity: sha512-Go19xM6T9puCOWntie1/P997aXxFsOi37JIHRWI514Hc6ZnaHGKY9xFhrU65RT6CcBEzZoGG1e6Nq+DT04ZtZQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -1395,8 +1398,8 @@ packages:
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+  fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
@@ -2347,8 +2350,8 @@ packages:
     deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
-  rollup@3.29.4:
-    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
+  rollup@3.29.5:
+    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
@@ -2690,8 +2693,8 @@ packages:
   vfile@6.0.1:
     resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
 
-  vite@4.5.3:
-    resolution: {integrity: sha512-kQL23kMeX92v3ph7IauVkXkikdDRsYMGTVl5KY2E9OY4ONLvkHf04MDTbnfo6NKxZiDLWzVpP5oTa8hQD8U3dg==}
+  vite@4.5.10:
+    resolution: {integrity: sha512-f2ueoukYTMI/5kMMT7wW+ol3zL6z6PjN28zYrGKAjnbzXhRXWXPThD3uN6muCp+TbfXaDgGvRuPsg6mwVLaWwQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3434,14 +3437,14 @@ snapshots:
       '@unhead/schema': 1.8.10
       '@unhead/shared': 1.8.10
 
-  '@vitejs/plugin-react@3.1.0(vite@4.5.3(@types/node@18.19.10))':
+  '@vitejs/plugin-react@3.1.0(vite@4.5.10(@types/node@18.19.10))':
     dependencies:
       '@babel/core': 7.21.8
       '@babel/plugin-transform-react-jsx-self': 7.18.6(@babel/core@7.21.8)
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.8)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.5.3(@types/node@18.19.10)
+      vite: 4.5.10(@types/node@18.19.10)
     transitivePeerDependencies:
       - supports-color
 
@@ -3694,7 +3697,7 @@ snapshots:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   ci-info@4.0.0: {}
 
@@ -4371,7 +4374,7 @@ snapshots:
 
   fs.realpath@1.0.0: {}
 
-  fsevents@2.3.2:
+  fsevents@2.3.3:
     optional: true
 
   function-bind@1.1.1: {}
@@ -5498,9 +5501,9 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rollup@3.29.4:
+  rollup@3.29.5:
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   run-applescript@7.0.0: {}
 
@@ -5952,14 +5955,14 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@4.5.3(@types/node@18.19.10):
+  vite@4.5.10(@types/node@18.19.10):
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.33
-      rollup: 3.29.4
+      rollup: 3.29.5
     optionalDependencies:
       '@types/node': 18.19.10
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   vue-bundle-renderer@2.0.0:
     dependencies:
