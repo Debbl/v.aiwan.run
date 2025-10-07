@@ -10,6 +10,7 @@ const Triangle = lazy(() => import("~/pages/003/Triangle"));
 const WaterSky = lazy(() => import("~/pages/004/WaterSky"));
 const GirlEarrings = lazy(() => import("~/pages/005/GirlEarrings"));
 const Tin = lazy(() => import("~/pages/006/Tin"));
+const DoublePendulum = lazy(() => import("~/pages/007/Index"));
 
 const routes: RouteObject[] = [
   {
@@ -51,6 +52,11 @@ const routes: RouteObject[] = [
     id: "Tin",
     path: "/006",
     element: <Tin />,
+  },
+  {
+    id: "DoublePendulum",
+    path: "/007",
+    element: <DoublePendulum />,
   },
 ];
 const router = createBrowserRouter(routes);
