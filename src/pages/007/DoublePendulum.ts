@@ -429,7 +429,7 @@ class GLRenderer {
   constructor(gl: WebGLRenderingContext, tailLen: number) {
     this.gl = gl
 
-    gl.clearColor(1, 1, 1, 1)
+    gl.clearColor(0, 0, 0, 0) // 设置为透明背景
     gl.enable(gl.BLEND)
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
@@ -603,7 +603,10 @@ export class DoublePendulum {
     canvas: HTMLCanvasElement
     canvasWebGL: HTMLCanvasElement
   }) {
-    const gl = canvasWebGL.getContext('webgl')
+    const gl = canvasWebGL.getContext('webgl', {
+      alpha: true,
+      premultipliedAlpha: false,
+    })
     if (useWebGL && gl) {
       this.mode = '3d'
       this.gl = gl
