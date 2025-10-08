@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import { Keyboard } from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
 import { DoublePendulum } from './DoublePendulum'
 
 const Index: React.FC = () => {
   const canvas2dRef = useRef<HTMLCanvasElement | null>(null)
   const canvasWebGLRef = useRef<HTMLCanvasElement | null>(null)
+  const [showControls, setShowControls] = useState(false)
 
   useEffect(() => {
     const doublePendulum = new DoublePendulum({
@@ -58,21 +60,43 @@ const Index: React.FC = () => {
       />
 
       {/* Control panel */}
-      <div className='absolute left-4 top-4 z-20 rounded-lg bg-black/80 p-4 text-white backdrop-blur-sm'>
-        <h3 className='mb-2 text-sm font-semibold'>键盘控制</h3>
-        <div className='space-y-1 text-xs'>
-          <div>
-            <kbd className='rounded bg-gray-700 px-1 py-0.5'>Space</kbd>{' '}
-            暂停/继续
-          </div>
-          <div>
-            <kbd className='rounded bg-gray-700 px-1 py-0.5'>A</kbd> 添加摆锤
-          </div>
-          <div>
-            <kbd className='rounded bg-gray-700 px-1 py-0.5'>D</kbd> 删除摆锤
-          </div>
-          <div>
-            <kbd className='rounded bg-gray-700 px-1 py-0.5'>M</kbd> 切换模式
+      <div
+        className='group absolute left-4 top-4 z-20'
+        onMouseEnter={() => setShowControls(true)}
+        onMouseLeave={() => setShowControls(false)}
+        onClick={() => setShowControls(!showControls)}
+      >
+        {/* Keyboard icon - always visible */}
+        <div className='flex size-10 cursor-pointer items-center justify-center rounded-lg bg-black/80 text-white backdrop-blur-sm transition-colors hover:bg-black/90'>
+          <Keyboard size={18} />
+        </div>
+
+        {/* Controls panel - shown on hover (desktop) or click (mobile) */}
+        <div
+          className={`absolute left-0 top-12 rounded-lg bg-black/80 p-4 text-white backdrop-blur-sm transition-all duration-200 ${
+            showControls
+              ? 'visible translate-y-0 opacity-100'
+              : 'invisible -translate-y-2 opacity-0'
+          }`}
+        >
+          <h3 className='mb-2 text-sm font-semibold'>Keyboard Controls</h3>
+          <div className='space-y-1 whitespace-nowrap text-xs'>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>Space</kbd>{' '}
+              stop/resume
+            </div>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>A</kbd> Add
+              Pendulum
+            </div>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>D</kbd> Delete
+              Pendulum
+            </div>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>M</kbd> Toggle
+              Mode
+            </div>
           </div>
         </div>
       </div>
