@@ -147,8 +147,7 @@ function _clear3d(gl: any) {
 }
 
 function clear2d(ctx: CanvasRenderingContext2D) {
-  ctx.fillStyle = 'white'
-  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 }
 
 class History {
