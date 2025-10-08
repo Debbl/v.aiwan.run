@@ -16,18 +16,17 @@ function App() {
             path={r.path}
             element={
               <div>
+                {r.element}
                 <div className='fixed bottom-1 left-2 z-10'>
                   <button
                     type='button'
-                    className='text-gray-800 opacity-0 transition-all duration-300 ease-in hover:opacity-100'
+                    className='text-gray-800 opacity-30 transition-all duration-300 ease-in hover:opacity-100'
                   >
                     <a href='/' className='underline'>
                       {'>cd ..'}
                     </a>
                   </button>
                 </div>
-
-                {r.element}
               </div>
             }
           />

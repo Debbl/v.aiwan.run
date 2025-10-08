@@ -79,7 +79,9 @@ const Index: React.FC = () => {
               : 'invisible -translate-y-2 opacity-0'
           }`}
         >
-          <h3 className='mb-2 text-sm font-semibold'>Keyboard Controls</h3>
+          <h3 className='mb-2 text-nowrap text-sm font-semibold'>
+            Keyboard Controls
+          </h3>
           <div className='space-y-1 whitespace-nowrap text-xs'>
             <div>
               <kbd className='rounded bg-gray-700 px-1 py-0.5'>Space</kbd>{' '}
