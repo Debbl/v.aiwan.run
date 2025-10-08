@@ -1,11 +1,11 @@
 // @ts-check
-import { config } from "@debbl/eslint-config";
+import { defineConfig } from '@debbl/eslint-config'
 
-export default config({
+export default defineConfig({
   ignores: {
-    files: ["public"],
+    files: ['public'],
   },
   typescript: true,
   react: true,
   tailwindcss: true,
-});
+})
