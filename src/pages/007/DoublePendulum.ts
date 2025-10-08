@@ -134,9 +134,12 @@ function draw2d(
   massColor: [number, number, number],
   tailColor: [number, number, number],
   midTailColor: [number, number, number],
+  displayWidth?: number,
+  displayHeight?: number,
 ) {
-  const w = ctx.canvas.width
-  const h = ctx.canvas.height
+  // Use display dimensions instead of actual canvas dimensions (High DPI optimization)
+  const w = displayWidth || ctx.canvas.width
+  const h = displayHeight || ctx.canvas.height
   const cx = w / 2
   const cy = h / 2
   const z = Math.min(w, h)
@@ -429,7 +432,7 @@ class GLRenderer {
   constructor(gl: WebGLRenderingContext, tailLen: number) {
     this.gl = gl
 
-    gl.clearColor(0, 0, 0, 0) // 设置为透明背景
+    gl.clearColor(0, 0, 0, 0) // Set transparent background
     gl.enable(gl.BLEND)
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
 
@@ -551,7 +554,11 @@ class Pendulum {
     )
   }
 
-  draw2d(ctx: CanvasRenderingContext2D) {
+  draw2d(
+    ctx: CanvasRenderingContext2D,
+    displayWidth?: number,
+    displayHeight?: number,
+  ) {
     draw2d(
       ctx,
       this.midTail,
@@ -561,6 +568,8 @@ class Pendulum {
       this.massColor,
       this.tailColor,
       this.midTailColor,
+      displayWidth,
+      displayHeight,
     )
   }
 
@@ -596,22 +605,28 @@ export class DoublePendulum {
   glRenderer: GLRenderer | null = null
   isWebGLAvailable = false
   state: Pendulum[] = [new Pendulum()]
+  // Resolution scaling factor, 1.0 = normal, 2.0 = double resolution
+  resolutionScale = 1.0
 
   constructor({
     useWebGL,
     canvas2d,
     canvasWebGL,
+    resolutionScale = 1.0,
   }: {
     useWebGL?: boolean
     canvas2d: HTMLCanvasElement
     canvasWebGL: HTMLCanvasElement
+    resolutionScale?: number
   }) {
+    this.resolutionScale = Math.max(0.5, Math.min(3.0, resolutionScale)) // Limit between 0.5x-3x
     this.canvas2d = canvas2d
     this.canvasWebGL = canvasWebGL
 
     const gl = canvasWebGL.getContext('webgl', {
       alpha: true,
       premultipliedAlpha: false,
+      antialias: true, // Enable antialiasing
     })
     if (gl) {
       this.gl = gl
@@ -631,18 +646,47 @@ export class DoublePendulum {
     canvasWebGL.style.display = 'none'
     this.canvas = canvas2d
     this.mode = '2d-only'
-    this.ctx = canvas2d.getContext('2d')
+    this.ctx = canvas2d.getContext('2d', {
+      alpha: true,
+      // High quality rendering settings
+      desynchronized: false, // Ensure synchronous rendering
+    })
+
+    // Optimize 2D rendering quality
+    if (this.ctx) {
+      this.optimizeCanvasRendering(this.ctx)
+    }
   }
 
   render(t: number) {
     const dt = Math.min(t - this.last, this.dtMax)
     const ww = window.innerWidth
     const wh = window.innerHeight
+    const dpr = window.devicePixelRatio || 1
 
-    if (this.canvas.width !== ww || this.canvas.height !== wh) {
+    // High DPI screen optimization + manual resolution scaling
+    const displayWidth = ww
+    const displayHeight = wh
+    const canvasWidth = Math.floor(displayWidth * dpr * this.resolutionScale)
+    const canvasHeight = Math.floor(displayHeight * dpr * this.resolutionScale)
+
+    if (
+      this.canvas.width !== canvasWidth ||
+      this.canvas.height !== canvasHeight
+    ) {
       /* Only resize when necessary */
-      this.canvas.width = ww
-      this.canvas.height = wh
+      this.canvas.width = canvasWidth
+      this.canvas.height = canvasHeight
+
+      // Set CSS dimensions (display size)
+      this.canvas.style.width = `${displayWidth}px`
+      this.canvas.style.height = `${displayHeight}px`
+
+      // Scale 2D context (including DPI and resolution scaling)
+      if (this.ctx && this.mode === '2d-only') {
+        const totalScale = dpr * this.resolutionScale
+        this.ctx.scale(totalScale, totalScale)
+      }
     }
     if (this.running) {
       for (let i = 0; i < this.state.length; i++) {
@@ -655,13 +699,32 @@ export class DoublePendulum {
     } else if (this.ctx) {
       clear2d(this.ctx)
       for (let i = 0; i < this.state.length; i++) {
-        this.state[i].draw2d(this.ctx)
+        this.state[i].draw2d(this.ctx, displayWidth, displayHeight)
       }
     }
 
     this.last = t
 
     window.requestAnimationFrame(this.render.bind(this))
+  }
+
+  private optimizeCanvasRendering(ctx: CanvasRenderingContext2D) {
+    // Enable antialiasing and image smoothing
+    ctx.imageSmoothingEnabled = true
+
+    // Set high quality image smoothing algorithm (if supported)
+    if ('imageSmoothingQuality' in ctx) {
+      ;(ctx as any).imageSmoothingQuality = 'high'
+    }
+
+    // Set line connection style to round (smoother)
+    ctx.lineJoin = 'round'
+    ctx.lineCap = 'round'
+
+    // Set text rendering quality (if text rendering is needed)
+    if ('textRenderingOptimization' in ctx) {
+      ;(ctx as any).textRenderingOptimization = 'optimizeQuality'
+    }
   }
 
   stop() {
@@ -693,6 +756,33 @@ export class DoublePendulum {
       this.canvas = this.canvas2d
       this.canvasWebGL.style.display = 'none'
       this.canvas2d.style.display = 'block'
+    }
+  }
+
+  // Resolution control methods
+  setResolution(scale: number) {
+    this.resolutionScale = Math.max(0.5, Math.min(3.0, scale))
+    // Force canvas resize
+    this.canvas.width = 0
+    this.canvas.height = 0
+  }
+
+  increaseResolution() {
+    this.setResolution(this.resolutionScale + 0.25)
+  }
+
+  decreaseResolution() {
+    this.setResolution(this.resolutionScale - 0.25)
+  }
+
+  getResolutionInfo() {
+    const dpr = window.devicePixelRatio || 1
+    const effectiveScale = dpr * this.resolutionScale
+    return {
+      devicePixelRatio: dpr,
+      resolutionScale: this.resolutionScale,
+      effectiveScale,
+      description: `${Math.round(effectiveScale * 100)}% Resolution`,
     }
   }
 }

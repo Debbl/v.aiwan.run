@@ -1,20 +1,35 @@
 import { Keyboard } from 'lucide-react'
 import React, { useEffect, useRef, useState } from 'react'
 import { DoublePendulum } from './DoublePendulum'
+import style from './style.module.css'
 
 const Index: React.FC = () => {
   const canvas2dRef = useRef<HTMLCanvasElement | null>(null)
   const canvasWebGLRef = useRef<HTMLCanvasElement | null>(null)
+  const doublePendulumRef = useRef<DoublePendulum | null>(null)
   const [showControls, setShowControls] = useState(false)
+  const [resolutionInfo, setResolutionInfo] =
+    useState<string>('100% Resolution')
 
   useEffect(() => {
     const doublePendulum = new DoublePendulum({
       useWebGL: false,
       canvas2d: canvas2dRef.current!,
       canvasWebGL: canvasWebGLRef.current!,
+      resolutionScale: 1.5, // Default to 1.5x resolution for clearer visuals
     })
 
+    doublePendulumRef.current = doublePendulum
+
     window.requestAnimationFrame(doublePendulum.render.bind(doublePendulum))
+
+    const updateResolutionInfo = () => {
+      const info = doublePendulum.getResolutionInfo().description
+      setResolutionInfo(info)
+    }
+
+    // Initialize resolution info
+    const timeoutId = setTimeout(updateResolutionInfo, 0)
 
     const handleKeyUp = (e: KeyboardEvent) => {
       switch (e.code) {
@@ -34,16 +49,27 @@ const Index: React.FC = () => {
         case 'KeyM':
           doublePendulum.toggleMode()
           break
+        case 'Equal': // "+" key
+        case 'NumpadAdd':
+          doublePendulum.increaseResolution()
+          updateResolutionInfo()
+          break
+        case 'Minus': // "-" key
+        case 'NumpadSubtract':
+          doublePendulum.decreaseResolution()
+          updateResolutionInfo()
+          break
       }
     }
     window.addEventListener('keyup', handleKeyUp)
 
     return () => {
       window.removeEventListener('keyup', handleKeyUp)
+      clearTimeout(timeoutId)
     }
   }, [])
   return (
-    <div className='relative flex min-w-[300px] flex-col items-center justify-center sm:flex-row'>
+    <div className='min-w-300px relative flex flex-col items-center justify-center sm:flex-row'>
       {/* Checkerboard background */}
       <div
         className='pointer-events-none absolute inset-0 opacity-20'
@@ -82,6 +108,7 @@ const Index: React.FC = () => {
           <h3 className='mb-2 text-nowrap text-sm font-semibold'>
             Keyboard Controls
           </h3>
+          <div className='mb-2 text-xs text-gray-300'>{resolutionInfo}</div>
           <div className='space-y-1 whitespace-nowrap text-xs'>
             <div>
               <kbd className='rounded bg-gray-700 px-1 py-0.5'>Space</kbd>{' '}
@@ -99,14 +126,25 @@ const Index: React.FC = () => {
               <kbd className='rounded bg-gray-700 px-1 py-0.5'>M</kbd> Toggle
               Mode
             </div>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>+</kbd> Higher
+              Resolution
+            </div>
+            <div>
+              <kbd className='rounded bg-gray-700 px-1 py-0.5'>-</kbd> Lower
+              Resolution
+            </div>
           </div>
         </div>
       </div>
 
-      <canvas ref={canvas2dRef} className='relative z-10'>
+      <canvas ref={canvas2dRef} className={`relative z-0 ${style.canvas}`}>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
-      <canvas ref={canvasWebGLRef} className='relative z-10'>
+      <canvas
+        ref={canvasWebGLRef}
+        className={`absolute left-0 top-0 z-0 ${style.canvas}`}
+      >
         Your browser does not support the HTML5 canvas tag.
       </canvas>
     </div>
