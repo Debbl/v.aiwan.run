@@ -2,12 +2,14 @@ import React, { useEffect, useRef } from 'react'
 import { DoublePendulum } from './DoublePendulum'
 
 const Index: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const canvas2dRef = useRef<HTMLCanvasElement | null>(null)
+  const canvasWebGLRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
     const doublePendulum = new DoublePendulum({
-      useWebGL: false,
-      canvas: canvasRef.current!,
+      useWebGL: true,
+      canvas: canvas2dRef.current!,
+      canvasWebGL: canvasWebGLRef.current!,
     })
 
     window.requestAnimationFrame(doublePendulum.render.bind(doublePendulum))
@@ -28,7 +30,10 @@ const Index: React.FC = () => {
           backgroundPosition: '0 0, 0 20px, 20px -20px, -20px 0px',
         }}
       />
-      <canvas ref={canvasRef} className='relative z-10'>
+      <canvas ref={canvas2dRef} className='relative z-10'>
+        Your browser does not support the HTML5 canvas tag.
+      </canvas>
+      <canvas ref={canvasWebGLRef} className='relative z-10'>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
     </div>

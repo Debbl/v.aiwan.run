@@ -334,6 +334,16 @@ function draw3d(
   gl.vertexAttribPointer(tail.a_point, 2, gl.FLOAT, false, 0, 0)
   for (let i = 0; i < pendulums.length; i++) {
     const p = pendulums[i]
+    // Draw midTail (first pendulum tail)
+    if (p.midTail.length) {
+      polyline(p.midTail, webgl.tailpoly)
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, webgl.tailpoly)
+      gl.uniform3fv(tail.u_color, p.midTailColor)
+      const cutoff = 1 - (p.midTail.length * 2) / p.midTail.v.length
+      gl.uniform1f(tail.u_cutoff, cutoff * 0.8) // Apply 0.8 alpha multiplier like in 2D
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, p.midTail.length * 2)
+    }
+    // Draw endTail (second pendulum tail)
     if (p.endTail.length) {
       polyline(p.endTail, webgl.tailpoly)
       gl.bufferSubData(gl.ARRAY_BUFFER, 0, webgl.tailpoly)
@@ -357,9 +367,19 @@ function draw3d(
     y1 *= d / ay
     x2 *= d / ax
     y2 *= d / ay
+
+    // Draw center point (fixed point) - black
     gl.uniform3fv(mass.u_color, p.massColor)
+    gl.uniform2f(mass.u_center, 0, 0)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+    // Draw middle point (first pendulum) - red (midTailColor)
+    gl.uniform3fv(mass.u_color, p.midTailColor)
     gl.uniform2f(mass.u_center, x1, y1)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+    // Draw end point (second pendulum) - green (tailColor)
+    gl.uniform3fv(mass.u_color, p.tailColor)
     gl.uniform2f(mass.u_center, x2, y2)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
   }
@@ -376,10 +396,15 @@ function draw3d(
     const [a1, a2, _p1, _p2] = p.state()
     x1 *= d / ax
     y1 *= d / ay
+
+    // First bar (from center to first pendulum) - use massColor (black)
     gl.uniform3fv(bar.u_color, p.massColor)
     gl.uniform2f(bar.u_attach, 0, 0)
     gl.uniform1f(bar.u_angle, a1 - Math.PI / 2)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+    // Second bar (from first to second pendulum) - use massColor (black)
+    gl.uniform3fv(bar.u_color, p.massColor)
     gl.uniform2f(bar.u_attach, x1, y1)
     gl.uniform1f(bar.u_angle, a2 - Math.PI / 2)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
@@ -570,24 +595,30 @@ export class DoublePendulum {
   state: Pendulum[] = [new Pendulum()]
 
   constructor({
-    useWebGL: _useWebGL,
+    useWebGL,
     canvas,
+    canvasWebGL,
   }: {
     useWebGL?: boolean
     canvas: HTMLCanvasElement
+    canvasWebGL: HTMLCanvasElement
   }) {
-    this.canvas = canvas
+    const gl = canvasWebGL.getContext('webgl')
+    if (useWebGL && gl) {
+      this.mode = '3d'
+      this.gl = gl
+      this.glRenderer = new GLRenderer(gl, 400)
+      this.canvas = canvasWebGL
 
-    const gl = this.canvas.getContext('webgl')
-    if (!gl) {
-      this.mode = '2d-only'
-      this.ctx = canvas.getContext('2d')
+      canvas.style.display = 'none'
+
       return
     }
 
-    this.mode = '3d'
-    this.gl = gl
-    this.glRenderer = new GLRenderer(gl, 400)
+    canvasWebGL.style.display = 'none'
+    this.canvas = canvas
+    this.mode = '2d-only'
+    this.ctx = canvas.getContext('2d')
   }
 
   render(t: number) {
