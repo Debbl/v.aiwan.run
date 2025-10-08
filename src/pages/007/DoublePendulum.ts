@@ -326,6 +326,7 @@ function draw3d(
   const ay = h / z
   const d = barLength * 2
 
+  // First draw tails (background layer)
   const tail = webgl.tail
   gl.useProgram(tail.program)
   gl.uniform2f(tail.u_aspect, ax / d, ay / d)
@@ -357,6 +358,34 @@ function draw3d(
     }
   }
 
+  // Then draw bars (middle layer)
+  const bar = webgl.bar
+  gl.useProgram(bar.program)
+  gl.uniform2f(bar.u_aspect, ax, ay)
+  gl.enableVertexAttribArray(bar.a_point)
+  gl.bindBuffer(gl.ARRAY_BUFFER, webgl.quad)
+  gl.vertexAttribPointer(bar.a_point, 2, gl.FLOAT, false, 0, 0)
+  for (let i = 0; i < pendulums.length; i++) {
+    const p = pendulums[i]
+    let [x1, y1, _x2, _y2] = p.positions()
+    const [a1, a2, _p1, _p2] = p.state()
+    x1 *= d / ax
+    y1 *= d / ay
+
+    // First bar (from center to first pendulum) - use massColor (black)
+    gl.uniform3fv(bar.u_color, p.massColor)
+    gl.uniform2f(bar.u_attach, 0, 0)
+    gl.uniform1f(bar.u_angle, a1 - Math.PI / 2)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+    // Second bar (from first to second pendulum) - use massColor (black)
+    gl.uniform3fv(bar.u_color, p.massColor)
+    gl.uniform2f(bar.u_attach, x1, y1)
+    gl.uniform1f(bar.u_angle, a2 - Math.PI / 2)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+  }
+
+  // Finally draw masses (top layer)
   const mass = webgl.mass
   gl.useProgram(mass.program)
   gl.uniform2f(mass.u_aspect, ax, ay)
@@ -384,32 +413,6 @@ function draw3d(
     // Draw end point (second pendulum) - green (tailColor)
     gl.uniform3fv(mass.u_color, p.tailColor)
     gl.uniform2f(mass.u_center, x2, y2)
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
-  }
-
-  const bar = webgl.bar
-  gl.useProgram(bar.program)
-  gl.uniform2f(bar.u_aspect, ax, ay)
-  gl.enableVertexAttribArray(bar.a_point)
-  /* Quad buffer still bound from previous draws */
-  gl.vertexAttribPointer(bar.a_point, 2, gl.FLOAT, false, 0, 0)
-  for (let i = 0; i < pendulums.length; i++) {
-    const p = pendulums[i]
-    let [x1, y1, _x2, _y2] = p.positions()
-    const [a1, a2, _p1, _p2] = p.state()
-    x1 *= d / ax
-    y1 *= d / ay
-
-    // First bar (from center to first pendulum) - use massColor (black)
-    gl.uniform3fv(bar.u_color, p.massColor)
-    gl.uniform2f(bar.u_attach, 0, 0)
-    gl.uniform1f(bar.u_angle, a1 - Math.PI / 2)
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
-
-    // Second bar (from first to second pendulum) - use massColor (black)
-    gl.uniform3fv(bar.u_color, p.massColor)
-    gl.uniform2f(bar.u_attach, x1, y1)
-    gl.uniform1f(bar.u_angle, a2 - Math.PI / 2)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
   }
 }

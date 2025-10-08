@@ -69,7 +69,7 @@ const Index: React.FC = () => {
     }
   }, [])
   return (
-    <div className='min-w-300px relative flex flex-col items-center justify-center sm:flex-row'>
+    <div className='relative flex min-w-[300px] flex-col items-center justify-center sm:flex-row'>
       {/* Checkerboard background */}
       <div
         className='pointer-events-none absolute inset-0 opacity-20'
