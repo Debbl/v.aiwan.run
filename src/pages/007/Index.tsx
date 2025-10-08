@@ -135,6 +135,16 @@ const Index: React.FC = () => {
               Resolution
             </div>
           </div>
+          <div className='mt-3 border-t border-gray-600 pt-2'>
+            <a
+              href='https://github.com/skeeto/double-pendulum'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='text-xs text-blue-300 underline hover:text-blue-200'
+            >
+              Inspired
+            </a>
+          </div>
         </div>
       </div>
 
