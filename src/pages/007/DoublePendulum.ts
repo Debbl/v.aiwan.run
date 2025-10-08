@@ -588,40 +588,50 @@ export class DoublePendulum {
   dtMax = 30.0 // ms
   running = true
   canvas: HTMLCanvasElement
+  canvas2d: HTMLCanvasElement
+  canvasWebGL: HTMLCanvasElement
   ctx: CanvasRenderingContext2D | null = null
   mode: '2d-only' | '3d' = '2d-only'
   gl: WebGLRenderingContext | null = null
   glRenderer: GLRenderer | null = null
+  isWebGLAvailable = false
   state: Pendulum[] = [new Pendulum()]
 
   constructor({
     useWebGL,
-    canvas,
+    canvas2d,
     canvasWebGL,
   }: {
     useWebGL?: boolean
-    canvas: HTMLCanvasElement
+    canvas2d: HTMLCanvasElement
     canvasWebGL: HTMLCanvasElement
   }) {
+    this.canvas2d = canvas2d
+    this.canvasWebGL = canvasWebGL
+
     const gl = canvasWebGL.getContext('webgl', {
       alpha: true,
       premultipliedAlpha: false,
     })
-    if (useWebGL && gl) {
-      this.mode = '3d'
+    if (gl) {
       this.gl = gl
+      this.isWebGLAvailable = true
       this.glRenderer = new GLRenderer(gl, 400)
-      this.canvas = canvasWebGL
 
-      canvas.style.display = 'none'
+      if (useWebGL) {
+        this.mode = '3d'
+        this.canvas = canvasWebGL
 
-      return
+        canvas2d.style.display = 'none'
+
+        return
+      }
     }
 
     canvasWebGL.style.display = 'none'
-    this.canvas = canvas
+    this.canvas = canvas2d
     this.mode = '2d-only'
-    this.ctx = canvas.getContext('2d')
+    this.ctx = canvas2d.getContext('2d')
   }
 
   render(t: number) {
@@ -652,5 +662,37 @@ export class DoublePendulum {
     this.last = t
 
     window.requestAnimationFrame(this.render.bind(this))
+  }
+
+  stop() {
+    this.running = false
+  }
+
+  resume() {
+    this.running = true
+  }
+
+  addPendulum() {
+    // const color = [Math.random(), Math.random(), Math.random()]
+
+    this.state.push(new Pendulum())
+  }
+
+  deletePendulum() {
+    if (this.state.length > 1) this.state.pop()
+  }
+
+  toggleMode() {
+    if (this.mode === '2d-only' && this.isWebGLAvailable) {
+      this.mode = '3d'
+      this.canvas = this.canvasWebGL
+      this.canvas2d.style.display = 'none'
+      this.canvasWebGL.style.display = 'block'
+    } else {
+      this.mode = '2d-only'
+      this.canvas = this.canvas2d
+      this.canvasWebGL.style.display = 'none'
+      this.canvas2d.style.display = 'block'
+    }
   }
 }
