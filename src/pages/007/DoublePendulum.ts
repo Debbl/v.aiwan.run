@@ -123,12 +123,20 @@ function draw2d(
   ctx.lineTo(x1, y1)
   ctx.stroke()
 
+  // Draw center point (fixed point) - black
   ctx.beginPath()
   ctx.arc(cx, cy, (z * massRadius) / 2, 0, 2 * Math.PI)
   ctx.fill()
 
+  // Draw middle point (first pendulum) - red
+  ctx.fillStyle = color2style(midTailColor)
   ctx.beginPath()
   ctx.arc(x0, y0, (z * massRadius) / 2, 0, 2 * Math.PI)
+  ctx.fill()
+
+  // Draw end point (second pendulum) - green
+  ctx.fillStyle = color2style(tailColor)
+  ctx.beginPath()
   ctx.arc(x1, y1, (z * massRadius) / 2, 0, 2 * Math.PI)
   ctx.fill()
 }
@@ -179,8 +187,8 @@ class History {
 class Pendulum {
   midTail: History
   endTail: History
-  tailColor: [number, number, number] = [0, 0, 1]
-  midTailColor: [number, number, number] = [0, 1, 0]
+  tailColor: [number, number, number] = [0, 1, 0]
+  midTailColor: [number, number, number] = [1, 0, 0]
   massColor: [number, number, number] = [0, 0, 0]
   a1 = (Math.random() * Math.PI) / 2 + (Math.PI * 3) / 4
   a2 = (Math.random() * Math.PI) / 2 + (Math.PI * 3) / 4
