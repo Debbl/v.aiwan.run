@@ -65,11 +65,13 @@ function color2style(color: [number, number, number]) {
 
 function draw2d(
   ctx: CanvasRenderingContext2D,
-  tail: History,
+  midTail: History,
+  endTail: History,
   a1: number,
   a2: number,
   massColor: [number, number, number],
   tailColor: [number, number, number],
+  midTailColor: [number, number, number],
 ) {
   const w = ctx.canvas.width
   const h = ctx.canvas.height
@@ -85,10 +87,23 @@ function draw2d(
 
   ctx.lineCap = 'butt'
   ctx.lineWidth = (z * tailThickness) / 2
+
+  // Draw middle point tail
+  ctx.strokeStyle = color2style(midTailColor)
+  let n = midTail.length
+  midTail.visit((x0, y0, x1, y1) => {
+    ctx.globalAlpha = (n-- / midTail.length) * 0.8
+    ctx.beginPath()
+    ctx.moveTo(x0 * d + cx, y0 * d + cy)
+    ctx.lineTo(x1 * d + cx, y1 * d + cy)
+    ctx.stroke()
+  })
+
+  // Draw end point tail
   ctx.strokeStyle = color2style(tailColor)
-  let n = tail.length
-  tail.visit(function (x0, y0, x1, y1) {
-    ctx.globalAlpha = n-- / tail.length
+  n = endTail.length
+  endTail.visit((x0, y0, x1, y1) => {
+    ctx.globalAlpha = n-- / endTail.length
     ctx.beginPath()
     ctx.moveTo(x0 * d + cx, y0 * d + cy)
     ctx.lineTo(x1 * d + cx, y1 * d + cy)
@@ -101,11 +116,17 @@ function draw2d(
   ctx.strokeStyle = massStyle
   ctx.fillStyle = massStyle
   ctx.globalAlpha = 1.0
+
   ctx.beginPath()
   ctx.moveTo(cx, cy)
   ctx.lineTo(x0, y0)
   ctx.lineTo(x1, y1)
   ctx.stroke()
+
+  ctx.beginPath()
+  ctx.arc(cx, cy, (z * massRadius) / 2, 0, 2 * Math.PI)
+  ctx.fill()
+
   ctx.beginPath()
   ctx.arc(x0, y0, (z * massRadius) / 2, 0, 2 * Math.PI)
   ctx.arc(x1, y1, (z * massRadius) / 2, 0, 2 * Math.PI)
@@ -133,11 +154,11 @@ class History {
     this.v = new Float32Array(n * 2)
   }
 
-  push(a1: number, a2: number) {
+  push(x: number, y: number) {
     const { i, length, v, n } = this
 
-    v[i * 2 + 0] = Math.sin(a1) + Math.sin(a2)
-    v[i * 2 + 1] = Math.cos(a1) + Math.cos(a2)
+    v[i * 2 + 0] = x
+    v[i * 2 + 1] = y
 
     this.i = (i + 1) % n
     if (length < n) this.length++
@@ -156,8 +177,10 @@ class History {
 }
 
 class Pendulum {
-  tail: History
+  midTail: History
+  endTail: History
   tailColor: [number, number, number] = [0, 0, 1]
+  midTailColor: [number, number, number] = [0, 1, 0]
   massColor: [number, number, number] = [0, 0, 0]
   a1 = (Math.random() * Math.PI) / 2 + (Math.PI * 3) / 4
   a2 = (Math.random() * Math.PI) / 2 + (Math.PI * 3) / 4
@@ -171,7 +194,8 @@ class Pendulum {
       this.p1 = init[2]
       this.p2 = init[3]
     }
-    this.tail = new History(tailMax)
+    this.midTail = new History(tailMax)
+    this.endTail = new History(tailMax)
   }
 
   state() {
@@ -196,11 +220,27 @@ class Pendulum {
       dt,
     )
 
-    this.tail.push(this.a1, this.a2)
+    // Record middle point position (first pendulum)
+    this.midTail.push(Math.sin(this.a1), Math.cos(this.a1))
+
+    // Record end point position (second pendulum)
+    this.endTail.push(
+      Math.sin(this.a1) + Math.sin(this.a2),
+      Math.cos(this.a1) + Math.cos(this.a2),
+    )
   }
 
   draw2d(ctx: CanvasRenderingContext2D) {
-    draw2d(ctx, this.tail, this.a1, this.a2, this.massColor, this.tailColor)
+    draw2d(
+      ctx,
+      this.midTail,
+      this.endTail,
+      this.a1,
+      this.a2,
+      this.massColor,
+      this.tailColor,
+      this.midTailColor,
+    )
   }
 
   // TODO

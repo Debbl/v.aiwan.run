@@ -13,7 +13,7 @@ const Index: React.FC = () => {
     window.requestAnimationFrame(doublePendulum.render.bind(doublePendulum))
   }, [])
   return (
-    <div className='mt-16 flex min-w-[300px] flex-col items-center justify-center sm:flex-row'>
+    <div className='flex min-w-[300px] flex-col items-center justify-center sm:flex-row'>
       <canvas ref={canvasRef}>
         Your browser does not support the HTML5 canvas tag.
       </canvas>
